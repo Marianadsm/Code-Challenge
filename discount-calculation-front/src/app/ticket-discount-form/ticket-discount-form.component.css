@@ -1,0 +1,125 @@
+form {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px;
+  }
+  
+  .ticket-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+  
+  .ticket-card {
+    cursor: pointer;
+    text-align: center;
+    background: #eaeaea;
+    border-radius: 8px;
+    padding: 20px; 
+    flex: 0 1 150px;
+    margin: 10px; 
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ticket-card:hover{
+    background-color: #f8d7da;
+  }
+  
+  .ticket-card.selected {
+    background: #ec63ae;
+    color: white;
+    transform: scale(1.05);
+  }
+  
+  .ticket-card img {
+    max-width: 100px; 
+    margin-bottom: 5px;
+  }
+  .studentQuestion{
+    margin-right: 5px;
+  }
+  
+  
+  button {
+    background-color: #ea3398; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+    width: 100%; 
+  }
+  
+  button:hover {
+    background-color: #e70582; 
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%; 
+    text-align: center;
+    gap:10px
+  }
+  
+  .modal-content h2 {
+    margin-top: 0;
+  }
+  
+  .modal-content button {
+    margin-top: 10px;
+    width: auto; 
+  }
+  
+  @media (max-width: 600px) {
+    .ticket-options {
+      flex-direction: column; 
+    }
+  
+    .ticket-card {
+      margin-bottom: 10px; 
+    }
+  }
+  
+  .alert {
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #f8d7da; 
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  
+  .alert strong {
+    font-weight: bold; 
+  }
+  

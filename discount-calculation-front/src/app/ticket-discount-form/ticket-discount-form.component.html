@@ -1,0 +1,113 @@
+<div>
+    <header
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: #f5f5f5;
+        margin-bottom: 20px;
+      "
+    >
+      <h1 style="margin: 0">Cálculo de Desconto de Ingressos</h1>
+    </header>
+  
+    <h2 style="margin-bottom: 50px">Calcular Desconto do Ingresso</h2>
+  
+    <form>
+      <div>
+        <label for="ticketType">Selecione o tipo de Ingresso:</label>
+        <div class="ticket-options">
+          <div
+            class="ticket-card"
+            (click)="selectTicketType('criança')"
+            [class.selected]="ticketType === 'criança'"
+          >
+            <img src="/assets/images/children_16776929.png" alt="Criança" />
+            <p>Criança</p>
+          </div>
+  
+          <div
+            class="ticket-card"
+            (click)="selectTicketType('estudante')"
+            [class.selected]="ticketType === 'estudante'"
+          >
+            <img src="/assets/images/students_17359871.png" alt="Estudante" />
+            <p>Estudante</p>
+          </div>
+  
+          <div
+            class="ticket-card"
+            (click)="selectTicketType('idoso')"
+            [class.selected]="ticketType === 'idoso'"
+          >
+            <img src="/assets/images/couple_437550.png" alt="Idoso" />
+            <p>Idoso</p>
+          </div>
+        </div>
+      </div>
+    </form>
+  
+    <div class="modal" *ngIf="modalOpen">
+      <div class="modal-content">
+        <h2>Confirmar Seleção</h2>
+        <p>Você selecionou o tipo de ingresso:</p>
+        <p>
+          <strong> {{ ticketType | uppercase }} </strong>
+        </p>
+  
+        <label for="weekDay">Escolha o dia da semana que deseja:</label>
+        <select [(ngModel)]="weekDay" name="weekDay" required>
+          <option value="">Selecione</option>
+          <option value="SEGUNDA">Segunda-feira</option>
+          <option value="TERCA">Terça-feira</option>
+          <option value="QUARTA">Quarta-feira</option>
+          <option value="QUINTA">Quinta-feira</option>
+          <option value="SEXTA">Sexta-feira</option>
+          <option value="SABADO">Sábado</option>
+          <option value="DOMINGO">Domingo</option>
+        </select>
+  
+        <div *ngIf="ticketType === 'estudante'">
+          <label class="studentQuestion" for="hasStudentCard"
+            >Possui Cartão de Estudante:</label
+          >
+          <input
+            type="checkbox"
+            [(ngModel)]="hasStudentCard"
+            name="hasStudentCard"
+          />
+        </div>
+  
+        <button (click)="confirmSelection()">Confirmar</button>
+        <button (click)="closeModal()">Cancelar</button>
+  
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          <strong>Erro!</strong> {{ errorMessage }}
+        </div>
+      </div>
+    </div>
+  
+    <!-- Modal de Preço Final -->
+    <div class="modal" *ngIf="finalModalOpen">
+      <div class="modal-content">
+        <h3>Informações Finais</h3>
+        <p>
+          Tipo de Ingresso:<strong> {{ ticketType | uppercase }} </strong>
+        </p>
+  
+        <p *ngIf="ticketType === 'estudante'">
+          Possui Cartão de Estudante:
+          {{ hasStudentCard ? "Sim" : ("Não" | uppercase) }}
+        </p>
+  
+        <h3>Preço Final: {{ finalPrice | currency : "BRL" }}</h3>
+        <p>
+          * Não se esqueça de apresentar seu documento com foto para receber o
+          desconto do dia.
+        </p>
+        <button (click)="closeFinalModal()">Fechar</button>
+      </div>
+    </div>
+  </div>
+  
