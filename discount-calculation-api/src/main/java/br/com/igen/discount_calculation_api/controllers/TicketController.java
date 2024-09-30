@@ -1,5 +1,7 @@
 package br.com.igen.discount_calculation_api.controllers;
 
+import java.util.EnumSet;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,19 +31,20 @@ public class TicketController {
 			@Parameter(name = "hasStudentCard", description = "Indica se o usuário possui um cartão de estudante", required = true) }, responses = {
 					@ApiResponse(responseCode = "200", description = "Preço do ingresso calculado com sucesso"),
 					@ApiResponse(responseCode = "400", description = "Parâmetros inválidos fornecidos") })
-	
+
 	@GetMapping("/calculateDiscount")
 	public ResponseEntity<Double> calculatePrice(@RequestParam String type, @RequestParam String weekDay,
 			@RequestParam boolean hasStudentCard) {
 		Ticket ticket = new Ticket(type);
 		WeekDay day = WeekDay.valueOf(weekDay.toUpperCase());
 
-		double finalPrice;
-		if (hasStudentCard == true && type.toLowerCase().equals("estudante") && !(weekDay.toUpperCase().equals("SABADO") || weekDay.toUpperCase().equals("DOMINGO")|| weekDay.toUpperCase().equals("FERIADO"))) {
+		boolean isStudentDiscountApplicable = hasStudentCard && type.equalsIgnoreCase("estudante")
+				&& !EnumSet.of(WeekDay.SABADO, WeekDay.DOMINGO, WeekDay.FERIADO).contains(day);
+
+		double finalPrice = ticketService.applyDiscountByTicketAndWeekday(ticket, day);
+
+		if (isStudentDiscountApplicable) {
 			finalPrice = ticketService.applyStudentsDiscount(ticket);
-		} else {
-			finalPrice = ticketService.applyDiscountByTicketAndWeekday(ticket, day);
-			
 		}
 
 		return ResponseEntity.ok(finalPrice);
