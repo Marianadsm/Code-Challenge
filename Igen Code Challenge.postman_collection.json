@@ -1,0 +1,18 @@
+{
+	"info": {
+		"_postman_id": "2103aa21-1755-41d8-9de5-168b8985e49c",
+		"name": "Igen Code Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30198227"
+	},
+	"item": [
+		{
+			"name": "Calculate Discount",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
