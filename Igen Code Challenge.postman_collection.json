@@ -10,7 +10,32 @@
 			"name": "Calculate Discount",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/calculateDiscount?type=estudante&weekDay=quinta&hasStudentCard=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"calculateDiscount"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "estudante"
+						},
+						{
+							"key": "weekDay",
+							"value": "quinta"
+						},
+						{
+							"key": "hasStudentCard",
+							"value": "true"
+						}
+					]
+				}
 			},
 			"response": []
 		}
