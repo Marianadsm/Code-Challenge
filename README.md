@@ -28,6 +28,7 @@ Este projeto é uma API para calcular o preço de ingressos com base em diferent
  ```bash
   git clone https://github.com/Marianadsm/Code-Challenge.git
 cd Code-Challenge
+cd discount-calculation-api
 ```
 
 - Compile o projeto usando Maven:
