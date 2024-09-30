@@ -26,7 +26,7 @@ Este projeto é uma API para calcular o preço de ingressos com base em diferent
 ## Instalação
 - Clone o repositório
  ```bash
-  git clone https://github.com/Marianadsm/Code-Challenge.git
+  git clone https://github.com/Marianadsm/Code-Challenge.git -b api
 cd Code-Challenge
 cd discount-calculation-api
 ```
@@ -63,4 +63,29 @@ GET /calculateDiscount?type=estudante&weekDay=segunda&hasStudentCard=true
 ## Documentação
 
 Para visualizar a documentação Swagger, inicie a aplicação. Em seguida, em seu navegador, vá para o domínio: <a href="http://localhost:8080/swagger-ui/index.html"> http://localhost:8080/swagger-ui/index.html </a>
+
+# Front-end
+
+- Node.js >= 18
+- npm 
+- Angular CLI (versão 12 ou superior)
+
+ # Instalação
+- Clone o repositório
+ ```bash
+git clone https://github.com/Marianadsm/Code-Challenge.git -b front-end
+```
+- Rode o comando
+ ```bash
+npm install -g @angular/cli
+```
+- Instale as dependências com o comando:
+ ```bash
+npm install
+```
+- Execute o servidor
+```bash
+ng serve
+```
+
 
